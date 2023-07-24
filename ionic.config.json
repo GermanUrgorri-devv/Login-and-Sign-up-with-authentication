@@ -1,0 +1,7 @@
+{
+  "name": "D-FlexZone Gym",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
