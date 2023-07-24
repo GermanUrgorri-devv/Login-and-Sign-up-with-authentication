@@ -10,4 +10,106 @@
       <ion-title size="large">login</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div mode="md" class="w-75 m-auto">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-item fill="solid">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" id="email" placeholder="Log with your email" type="email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item fill="solid">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input
+          formControlName="password"
+          id="password"
+          type="password"
+        ></ion-input>
+        <ion-button
+          class="eye"
+          fill="clear"
+          slot="end"
+          (click)="togglePasswordVisibility()"
+        >
+          <ion-icon
+            slot="icon-only"
+            [name]="showPassword ? 'eye' : 'eye-off'"
+          ></ion-icon>
+        </ion-button>
+      </ion-item>
+      <br>
+      <ion-button  type="submit" class="w-100">
+        Login
+      </ion-button>
+
+
+    </form>
+  </div>
+
+  <div mode="md" class="w-75 m-auto">
+    <form 
+        class="h-400 d-flex flex-column justify-content-between" 
+        [formGroup]="registerForm" (ngSubmit)="register()">
+        <div >
+
+          <ion-item fill="solid">
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input
+              
+              formControlName="email"
+              id="email"
+              placeholder="Ingrese su correo"
+              type="email"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item fill="solid">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input
+              
+              formControlName="password"
+              id="passwordRegistrer"
+              type="password"
+              
+            ></ion-input>
+            <ion-button
+              class="eye"
+              fill="clear"
+              slot="end"
+              (click)="togglePasswordVisibility()"
+            >
+              <ion-icon
+              slot="icon-only"
+              [name]="showPassword ? 'eye' : 'eye-off'"
+            ></ion-icon>
+          </ion-button>
+          </ion-item>
+          <ion-item fill="solid">
+            <ion-label position="floating">Repita Contraseña</ion-label>
+            <ion-input
+              
+              formControlName="repeatPassword"
+              id="repeatPassword"
+              type="password"
+              
+            ></ion-input>
+            <ion-button
+              class="eye"
+              fill="clear"
+              slot="end"
+              (click)="togglePasswordVisibility()"
+            >
+              <ion-icon
+                slot="icon-only"
+                [name]="showPassword ? 'eye' : 'eye-off'"
+              ></ion-icon>
+            </ion-button>
+          </ion-item>
+
+          <ion-button  type="submit" class="w-100">
+            Register
+          </ion-button>
+        </div>
+      </form>
+  </div>
 </ion-content>
