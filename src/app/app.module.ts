@@ -11,7 +11,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 
 
@@ -25,7 +25,8 @@ import { environment } from 'src/environments/environment';
     provideFirebaseApp(() => initializeApp(environment.firebase)), // Initialize Firebase
     provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), // Initialize Firebase Analytics
   ],  
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

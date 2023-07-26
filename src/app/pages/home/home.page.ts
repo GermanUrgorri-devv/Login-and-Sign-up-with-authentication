@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,10 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
 })
 export class HomePage {
 
-  constructor(public navigationService: NavigationService) {}
+  constructor(
+    public navigationService: NavigationService,
+    public userService: UserService
+    ) {}
 
 
 }
