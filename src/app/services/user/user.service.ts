@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { UserInterface } from 'src/app/models/user';
+import { Observable } from 'rxjs';
 
 
 
@@ -80,4 +81,12 @@ export class UserService {
       }
     });
   } 
+
+  public getUserRoles(uid: string): Observable<any> {
+    return this.firestore.collection('users').doc<UserInterface>(uid).valueChanges().pipe(
+      take(1),
+      map((user) => user ? user.roles : [])
+    );
+  }
+  
 }

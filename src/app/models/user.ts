@@ -1,7 +1,4 @@
-export interface Roles{
-    cats?: boolean;
-    dogs?: boolean;
-}
+export type Roles = string[];
 
 export class UserInterface {
     id?: string;
