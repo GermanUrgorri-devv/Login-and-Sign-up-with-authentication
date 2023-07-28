@@ -5,7 +5,7 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
 import { map, take } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { UserInterface } from 'src/app/models/user';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 
 
@@ -82,11 +82,24 @@ export class UserService {
     });
   } 
 
-  public getUserRoles(uid: string): Observable<any> {
-    return this.firestore.collection('users').doc<UserInterface>(uid).valueChanges().pipe(
-      take(1),
-      map((user) => user ? user.roles : [])
-    );
+  public getUserRoles(userID: string): Observable<any> {
+    try {
+      return this.firestore.collection('user').doc(userID).valueChanges().pipe(
+        take(1),
+        map((user: any) => {
+          if (user) { // verifica si user está definido
+            console.log(user.roles); // User roles are logged in the console
+            return user.roles;
+          } else {
+            console.log('User is undefined');
+            return null;
+          }
+        })
+      );
+    } catch (e) {
+      console.error("Error obteniendo los roles del usuario: ", e);
+      return throwError(e);
+    }
   }
   
 }

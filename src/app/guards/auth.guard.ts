@@ -28,10 +28,12 @@ export class RolesGuard  {
 
 
   canActivateWithRoles(rolesAllowed: string[], redirectPath: string) {
+    console.log('Allowed roles:', rolesAllowed);
     return this.auth.authState.pipe(
       switchMap(user => {
         if (user) {
           // User is signed in
+          console.log('User is signed in with UID:', user.uid); // Add this line
           return this.userService.getUserRoles(user.uid).pipe(
             tap((userRoles: any) => console.log(userRoles)), // imprime roles del usuario
             map(userRoles => { 
@@ -54,6 +56,7 @@ export class RolesGuard  {
           );
         } else {
           // No user is signed in, redirect to login
+          console.log('No user is signed in'); // Add this line
           this.navigationService.navigateTo('login');
           return of(false);
         }
@@ -66,4 +69,5 @@ export class RolesGuard  {
       })
     );
   } 
+  
 }
