@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 @Injectable({
@@ -14,6 +15,13 @@ export class UserService {
       .then(() => {
         this.navigationService.navigateTo('home');
       });
+  }
+
+  public loginWithGoogle(){
+    return this.auth.signInWithPopup( new GoogleAuthProvider())
+    .then(() => {
+      this.navigationService.navigateTo('home');
+    });
   }
 
   public register(email: string, password: string) {

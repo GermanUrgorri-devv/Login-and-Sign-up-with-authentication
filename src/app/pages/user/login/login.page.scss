@@ -1,7 +1,41 @@
+h1{
+    margin-top: 16px;
+}
+
 .item-fill-solid{
     border-radius: 0 !important;
 }
 
 .input-fill-solid.sc-ion-input-md-h {
     --border-radius: 0;
+}
+
+.btn-light{
+    height: 60px;
+
+    div{
+        width: 35px;
+    }
+}
+
+.w-400{
+    
+    max-width: 455px;
+    min-width: 400px;
+}
+
+#home {
+
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    cursor: pointer;
+
+}
+
+#home:hover {
+    transform: scale(1.5) ;
+}
+
+#home:active {
+    transform: scale(1.3);
 }

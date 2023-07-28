@@ -1,20 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="sunset" [fullscreen]="true">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <ion-button (click)="navigationService.navigateTo('login2')" expand="block">to login</ion-button> 
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <section class=" p-4 w-75">
+      <h1>Welcome,  </h1>
+    <ion-button (click)="navigationService.navigateTo('login')" expand="block">to login</ion-button> 
     <ion-button (click)="userService.logOut()" expand="block" color="danger">Log out</ion-button> 
+  </section>
   </div>
 </ion-content>

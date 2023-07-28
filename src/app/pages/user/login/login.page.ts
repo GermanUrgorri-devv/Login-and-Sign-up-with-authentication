@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -27,12 +28,17 @@ export class LoginPage implements OnInit {
   public registerPasswordError = '';  // Error message for register password
   public repeatPasswordError = '';    // Error message for repeat password
 
+  public showLoginOrRegister = true; // Controls visibility of login and register forms
 
   constructor( // Injecting services into the component
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    public navigationService: NavigationService
   ) { }
 
+  toggleForm() {
+    this.showLoginOrRegister = !this.showLoginOrRegister;
+  }
 
   public loginForm = this.formBuilder.group({ // Login form with its validation rules
     email: ['', [Validators.required, Validators.email]],
@@ -115,9 +121,6 @@ export class LoginPage implements OnInit {
     };
 
     this.userService.login(this.loginForm.value['email']!, this.loginForm.value['password']!)
-      .then((response: any) => {
-        console.log(response);
-      })
       .catch((error: any) => {
         switch (error.code) {
           case 'auth/invalid-email':
@@ -152,9 +155,6 @@ export class LoginPage implements OnInit {
 
 
     this.userService.register(this.registerForm.value['email']!, this.registerForm.value['password']!)
-      .then((response: any) => {
-        console.log(response);
-      })
       .catch((error: any) => {
         switch (error.code) {
           case 'auth/invalid-email':
@@ -178,5 +178,12 @@ export class LoginPage implements OnInit {
             break;
         }
       });
+  }
+
+  public loginWithGoogle(){
+    this.userService.loginWithGoogle()
+    .catch((error: any) => {
+      console.log(error)
+    })
   }
 }
