@@ -17,25 +17,3 @@ h1{
         width: 35px;
     }
 }
-
-.w-400{
-    
-    max-width: 455px;
-    min-width: 400px;
-}
-
-#home {
-
-    transition: all 0.2s ease-in-out;
-    transform: scale(1);
-    cursor: pointer;
-
-}
-
-#home:hover {
-    transform: scale(1.5) ;
-}
-
-#home:active {
-    transform: scale(1.3);
-}

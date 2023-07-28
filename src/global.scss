@@ -37,6 +37,12 @@ section {
     box-shadow: 8px 5px 20px #4b4b4b;
 }
 
+.w-400{
+    
+    max-width: 455px;
+    min-width: 400px;
+}
+
 .spacing {
     letter-spacing: .2rem;
 }
@@ -92,4 +98,20 @@ section {
 }
 .btn-group>.btn:focus, .btn-group>.btn:hover {
     z-index: auto;
+}
+
+#home {
+
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    cursor: pointer;
+
+}
+
+#home:hover {
+    transform: scale(1.5) ;
+}
+
+#home:active {
+    transform: scale(1.3);
 }

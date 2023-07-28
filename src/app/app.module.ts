@@ -16,6 +16,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -23,7 +24,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     IonicModule.forRoot(), 
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)), // Initialize Firebase
-    provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), // Initialize Firebase Analytics
+    provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), 
+    
   ],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],

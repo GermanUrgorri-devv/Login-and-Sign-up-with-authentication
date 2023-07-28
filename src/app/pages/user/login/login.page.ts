@@ -30,15 +30,6 @@ export class LoginPage implements OnInit {
 
   public showLoginOrRegister = true; // Controls visibility of login and register forms
 
-  constructor( // Injecting services into the component
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-    public navigationService: NavigationService
-  ) { }
-
-  toggleForm() {
-    this.showLoginOrRegister = !this.showLoginOrRegister;
-  }
 
   public loginForm = this.formBuilder.group({ // Login form with its validation rules
     email: ['', [Validators.required, Validators.email]],
@@ -60,6 +51,19 @@ export class LoginPage implements OnInit {
 
     { validator: this.passwordMatchValidator('password', 'repeatPassword') }
   );
+
+  
+  constructor( // Injecting services into the component
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    public navigationService: NavigationService
+  ) { }
+
+  toggleForm() {
+    this.showLoginOrRegister = !this.showLoginOrRegister;
+  }
+
+
 
   private passwordMatchValidator( // Custom validator to check if password and repeatPassword match
     controlName: string,

@@ -10,6 +10,6 @@ export class NavigationService {
 
   navigateTo(path: string) {
     this.router.navigate(['/' + path])
-    .catch(error => console.log(error));;
+    .catch(error => console.log(error));
   }
 }
