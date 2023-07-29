@@ -1,13 +1,12 @@
 export const environment = {
   firebase: {
-    projectId: 'gimnasio-germanurgorri',
-    appId: '1:692462923405:web:b3b04e15805453b05abcc4',
-    databaseURL: 'https://gimnasio-germanurgorri-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'gimnasio-germanurgorri.appspot.com',
-    apiKey: 'AIzaSyB7M2TNtZxLksy2rfL_GmT0JSbEwLlIAZU',
-    authDomain: 'gimnasio-germanurgorri.firebaseapp.com',
-    messagingSenderId: '692462923405',
-    measurementId: 'G-0CXTRP154R',
+    apiKey: "AIzaSyCjejhfAqVX8ZVhUzomq9rX62l0mMqX6jM",
+    authDomain: "auth-and-roles-management.firebaseapp.com",
+    projectId: "auth-and-roles-management",
+    storageBucket: "auth-and-roles-management.appspot.com",
+    messagingSenderId: "226008014513",
+    appId: "1:226008014513:web:804e5cf02dff6d97358c90",
+    measurementId: "G-FNXTRY1ZRM"
   },
   production: true
 };
