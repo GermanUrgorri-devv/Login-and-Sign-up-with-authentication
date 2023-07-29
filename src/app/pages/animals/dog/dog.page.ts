@@ -13,7 +13,7 @@ export class DogPage implements OnInit {
 
   constructor(private dogService : DogService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.isLoading = true; 
     this.dogService.get10Dogs().then(dogs => {
       this.dogs = dogs;  

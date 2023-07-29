@@ -14,15 +14,13 @@ export class DogService {
 
   constructor(private http: HttpClient) { }
 
-  public get10Dogs(): Promise<any[]> {
-    return this.http.get<any[]>("https://api.thedogapi.com/v1/images/search?format=json&limit=8",  { headers: this.header })
-      .toPromise()
-      .then(response => {
-        return response || []; 
-      })
-      .catch(error => {
-        console.error(error);
-        return Promise.resolve([]);  
-      });
+  public async get10Dogs(): Promise<any[]> {
+    try {
+      const response = await this.http.get<any[]>("https://api.thedogapi.com/v1/images/search?format=json&limit=8",  { headers: this.header }).toPromise();
+      return response || [];
+    } catch (error) {
+      console.error(error);
+      return [];  
+    }
   }
 }

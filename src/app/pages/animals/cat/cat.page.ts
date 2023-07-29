@@ -12,11 +12,15 @@ export class CatPage implements OnInit {
 
   constructor(private catService : CatService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.isLoading = true; 
-    this.catService.get10Cats().then(cats => {
-      this.cats = cats;  
+    try {
+      this.cats = await this.catService.get10Cats();
+    } catch (error) {
+      console.error(error);
+    } finally {
       this.isLoading = false; 
-    });
+    }
   }
 }
+

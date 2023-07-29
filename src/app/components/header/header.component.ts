@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
     this.userService.getUserName().then(data => {
       this.data = data;
       this.userService.getUserRoles().pipe(takeUntil(this.destroy$)).subscribe(roles => {
-        this.user = 'Name: ' + this.data.displayName + ', Rol/es: ' + (roles || []).join(", ")
+        this.user = 'Name: ' + this.data.displayName + ', Roles: ' + (roles || []).join(" and ")
       });
     });
   }

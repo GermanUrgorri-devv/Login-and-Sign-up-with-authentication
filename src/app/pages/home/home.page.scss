@@ -1,3 +1,16 @@
+p{
+  text-align: justify;
+}
+
+.border{
+  border-radius: 20px;
+  border-style: dashed !important;
+}
+
+.animal{
+  height: 100px;
+}
+
 #container {
   text-align: center;
 
@@ -8,20 +21,15 @@
   transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+#disclaimer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.5s ease-in-out;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#disclaimer.show {
+  max-height: 500px;  // Ajusta este valor según sea necesario
 }
 
-#container a {
-  text-decoration: none;
-}
+
+

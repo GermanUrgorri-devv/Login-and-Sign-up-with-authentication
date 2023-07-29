@@ -5,12 +5,59 @@
 
       <app-header title="Welcome home"></app-header>
 
-      <ion-button (click)="navigationService.navigateTo('login')" expand="block">to login</ion-button>
-      <ion-button (click)="navigationService.navigateTo('user-profile')" color="pink" expand="block">to
-        login</ion-button>
-      <ion-button (click)="userService.logOut()" expand="block" color="danger">Log out</ion-button>
-      <ion-button (click)="navigationService.navigateTo('cats')" color="pink" expand="block">to login</ion-button>
-      <ion-button (click)="navigationService.navigateTo('dogs')" color="pink" expand="block">to login</ion-button>
+      <div class="d-flex">
+        <ion-button [disabled]="!catRole" (click)="navigationService.navigateTo('cats')" color="pink">          <div class=" ion-text-wrap d-flex flex-column align-items-center w-100">
+            <div>
+              <img src="../../../assets/icon/cat.png" class="animal" alt="icon of a cat">
+            </div>
+            <hr class="w-100">
+            <span>Only for people who likes <strong>cats</strong> :D</span>
+          </div>
+        </ion-button>
+
+
+
+        <ion-button [disabled]="!dogRole" (click)="navigationService.navigateTo('dogs')" color="orange">
+          <div class=" ion-text-wrap d-flex flex-column align-items-center w-100">
+            <div>
+              <img src="../../../assets/icon/dog.png" class="animal" alt="icon of a dog">
+            </div>
+            <hr class="w-100">
+            <span>Only for people who likes <strong>dogs</strong> :D</span>
+          </div>
+        </ion-button>
+      </div>
+
+      <div class="px-4 mt-3 border border-4 border-danger">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="fw-bolder spacing">DISCLAIMER</h3>
+          <ion-button fill="clear" (click)="toggleDisclaimer()">
+            <ion-icon size="large" slot="icon-only" color="pink" [name]="showText ? 'eye' : 'eye-off'"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div id="disclaimer">
+          <p>
+            Hi user! Welcome to my small project of <strong>authentication and user role management.
+            </strong>This practice page was created using Angular Ionic and Firebase as the backend.
+            It features two buttons that display images from <a href="https://thecatapi.com/"
+              target="_blank">theCatAPI</a> and <a href="https://thedogapi.com/" target="_blank">TheDogAPI</a>, but the
+            main focus is on user management.
+          </p>
+
+          <p>
+            <u>If you didn't select both options in the previous form, one button will
+              be disabled due to access denial for the corresponding role</u>. Clicking the
+            house symbol allows you to adjust your roles.
+          </p>
+          <p>
+            <strong>If you find any code errors or vulnerabilities</strong>, I'd appreciate your
+            feedback. As a junior developer, I'm eager to learn from experienced
+            developers. Contact me at germanurgorri@gmail.com.
+          </p>
+        </div>
+      </div>
     </section>
   </div>
 </ion-content>

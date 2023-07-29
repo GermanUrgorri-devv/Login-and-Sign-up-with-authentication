@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -52,11 +52,13 @@ export class LoginPage implements OnInit {
     { validator: this.passwordMatchValidator('password', 'repeatPassword') }
   );
 
-  
-  constructor( // Injecting services into the component
+ 
+   constructor(  // Injecting services into the component
     private formBuilder: FormBuilder,
     private userService: UserService,
-    public navigationService: NavigationService
+    public navigationService: NavigationService,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) { }
 
   toggleForm() {
@@ -90,15 +92,15 @@ export class LoginPage implements OnInit {
     };
   }
 
-  togglePasswordVisibility() { // Toggle password field between plain text and password type
-    const passwordInputs = document.querySelectorAll('.password-field');
+  togglePasswordVisibility() {
+    const passwordInputs = this.el.nativeElement.querySelectorAll('.password-field');
 
-    passwordInputs.forEach((element) => {
+    passwordInputs.forEach((element: HTMLInputElement) => {
       let passwordInput = element as HTMLInputElement;
       if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
+        this.renderer.setProperty(passwordInput, 'type', 'text');
       } else {
-        passwordInput.type = 'password';
+        this.renderer.setProperty(passwordInput, 'type', 'password');
       }
     });
     this.showPassword = !this.showPassword;

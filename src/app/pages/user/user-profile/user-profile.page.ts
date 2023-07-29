@@ -27,7 +27,7 @@ export class UserProfilePage implements OnInit {
     name: ''
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.userService.isAuth()
     .subscribe((authState) => {
       if (authState) {
