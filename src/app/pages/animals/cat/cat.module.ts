@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CatPageRoutingModule } from './cat-routing.module';
 
 import { CatPage } from './cat.page';
+import { ComponentsModule } from "../../../components/components.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    CatPageRoutingModule
-  ],
-  declarations: [CatPage]
+    declarations: [CatPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        CatPageRoutingModule,
+        ComponentsModule
+    ]
 })
 export class CatPageModule {}

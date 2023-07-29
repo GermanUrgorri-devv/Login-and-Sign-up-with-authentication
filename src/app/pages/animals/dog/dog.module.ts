@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { DogPageRoutingModule } from './dog-routing.module';
 
 import { DogPage } from './dog.page';
+import { ComponentsModule } from "../../../components/components.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DogPageRoutingModule
-  ],
-  declarations: [DogPage]
+    declarations: [DogPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        DogPageRoutingModule,
+        ComponentsModule
+    ]
 })
 export class DogPageModule {}

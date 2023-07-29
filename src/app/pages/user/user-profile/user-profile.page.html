@@ -4,18 +4,14 @@
   <div class="d-flex justify-content-center align-items-center vh-100">
     <section class="w-400 p-4 ">
 
-      <div class=" mb-3 d-flex align-items-center justify-content-between">
-        <h1 class="fw-bolder fs-1 spacing text-center"> Edit profile</h1>
-        <ion-icon size="large" color="pink" name="home" id="home"
-        (click)="navigationService.navigateTo('home')"></ion-icon>
-      </div>
+      <app-header title="Edit profile"></app-header>
 
       <form [formGroup]="editForm" (ngSubmit)="updateUser()"
       class="h-400 d-flex flex-column justify-content-between">
         <div>
           <ion-item fill="solid">
             <ion-input label="Name" labelPlacement="floating" formControlName="name"
-              type="text" ></ion-input>
+             placeholder="You need a name to access home" type="text" ></ion-input>
             <ion-note color="danger" slot="helper"
              ></ion-note>
           </ion-item>

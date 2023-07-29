@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DogService } from 'src/app/services/animals/dog/dog.service';
 
 @Component({
   selector: 'app-dog',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DogPage implements OnInit {
 
-  constructor() { }
+  public dogs: any[] = []; 
+  public isLoading: boolean = false; 
+
+  constructor(private dogService : DogService) { }
 
   ngOnInit() {
+    this.isLoading = true; 
+    this.dogService.get10Dogs().then(dogs => {
+      this.dogs = dogs;  
+      this.isLoading = false; 
+    });
   }
-
 }
+

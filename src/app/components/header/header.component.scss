@@ -1,0 +1,17 @@
+#home-icon {
+
+    min-width: 100px;
+
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    cursor: pointer;
+
+}
+
+#home-icon:hover {
+    transform: scale(1.5) ;
+}
+
+#home-icon:active {
+    transform: scale(1.3);
+}

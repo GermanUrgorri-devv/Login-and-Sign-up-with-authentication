@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dog</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dog</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="sunset" [fullscreen]="true">
+  <div class="d-flex justify-content-center">
+    <section class="p-4 w-75 mt-5">
+      <app-header title="Here are some photos of dogs :D"></app-header>
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-sm="5" size-md="4" size-lg="3" *ngFor="let dog of dogs"> 
+              <img [src]="dog.url" alt="Gato" style="width: 300px;">
+            </ion-col>
+          </ion-row>
+        </ion-grid> 
+      </div>
+      <ion-progress-bar color="pink" type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
+    </section>
+  </div>
 </ion-content>
+

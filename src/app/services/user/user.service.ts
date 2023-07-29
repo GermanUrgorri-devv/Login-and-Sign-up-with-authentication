@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { map, take } from 'rxjs/operators';
+import { catchError, map, switchMap, take } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { UserInterface } from 'src/app/models/user';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, from, of, throwError } from 'rxjs';
 
 
 
@@ -13,6 +13,8 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+
+  public userDetailsUpdated = new Subject<void>();
 
   constructor(
     private auth: AngularFireAuth,
@@ -71,6 +73,7 @@ export class UserService {
         return user.updateProfile({
           displayName: name
         }).then(() => {
+          this.userDetailsUpdated.next();
           this.navigationService.navigateTo('home');
         })
           .catch((err) => {
@@ -81,25 +84,49 @@ export class UserService {
       }
     });
   } 
-
-  public getUserRoles(userID: string): Observable<any> {
+  
+  private getUser(userID: string): Observable<any> {
     try {
-      return this.firestore.collection('user').doc(userID).valueChanges().pipe(
-        take(1),
-        map((user: any) => {
-          if (user) { // verifica si user está definido
-            console.log(user.roles); // User roles are logged in the console
-            return user.roles;
-          } else {
-            console.log('User is undefined');
-            return null;
-          }
-        })
-      );
+      return this.firestore.collection('user').doc(userID).valueChanges().pipe(take(1));
     } catch (e) {
-      console.error("Error obteniendo los roles del usuario: ", e);
+      console.error("Error obteniendo el usuario: ", e);
       return throwError(e);
     }
   }
+  
+  private getUserData<T>(mapFn: (user: any) => T): Observable<T | null> {
+    return from(this.auth.currentUser).pipe(
+      switchMap((user) => {
+        if (user) {
+          return this.getUser(user.uid).pipe(
+            map(mapFn),
+            catchError((error) => {
+              console.error('Error getting user data:', error);
+              return of(null);
+            })
+          );
+        } else {
+          console.log('No user logged in');
+          return of(null);
+        }
+      })
+    );
+  }
+
+  public getUserRoles(): Observable<any> {
+    return this.getUserData((user) => user ? user.roles : null);
+  }
+
+  public async getUserName(): Promise<any> {
+    const user = await this.auth.currentUser;
+    if (user) {
+      return user|| []; 
+    } else {
+      console.log('No user logged in');
+      this.navigationService.navigateTo('login');
+      return '';
+    }
+  }
+  
   
 }

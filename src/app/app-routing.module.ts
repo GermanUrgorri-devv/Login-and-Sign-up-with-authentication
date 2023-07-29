@@ -26,13 +26,13 @@ const routes: Routes = [
     ...canActivate(() => redirectUnauthorizedTo(['/login']))
 },
 {
-    path: 'cat',
+    path: 'cats',
     loadChildren: () => import('./pages/animals/cat/cat.module').then( m => m.CatPageModule),
     canActivate: [RolesGuard],
     data: { roles: ['cats'], redirect: 'home' }
 },
 {
-    path: 'dog',
+    path: 'dogs',
     loadChildren: () => import('./pages/animals/dog/dog.module').then( m => m.DogPageModule),
     canActivate: [RolesGuard],
     data: { roles: ['dogs'], redirect: 'home' }

@@ -1,3 +1,11 @@
-<p>
-  header works!
-</p>
+<div class=" mb-3 d-flex align-items-center justify-content-between">
+
+  <h1 class="fw-bolder fs-1 spacing text-center"> {{ title }} </h1>
+
+  <ion-icon size="large" color="pink" name="home" id="home-icon" (click)="showActionSheet()"></ion-icon>
+
+  <ion-action-sheet  header="{{user}}" 
+  [buttons]="actionSheetButtons"></ion-action-sheet>
+
+
+</div>

@@ -1,11 +1,16 @@
 <ion-content class="sunset" [fullscreen]="true">
 
   <div class="d-flex justify-content-center align-items-center vh-100">
-    <section class=" p-4 w-75">
-      <h1>Welcome,  </h1>
-    <ion-button (click)="navigationService.navigateTo('login')" expand="block">to login</ion-button> 
-    <ion-button (click)="navigationService.navigateTo('user-profile')" color="pink" expand="block">to login</ion-button> 
-    <ion-button (click)="userService.logOut()" expand="block" color="danger">Log out</ion-button> 
-  </section>
+    <section class="w-400 p-4 w-75">
+
+      <app-header title="Welcome home"></app-header>
+
+      <ion-button (click)="navigationService.navigateTo('login')" expand="block">to login</ion-button>
+      <ion-button (click)="navigationService.navigateTo('user-profile')" color="pink" expand="block">to
+        login</ion-button>
+      <ion-button (click)="userService.logOut()" expand="block" color="danger">Log out</ion-button>
+      <ion-button (click)="navigationService.navigateTo('cats')" color="pink" expand="block">to login</ion-button>
+      <ion-button (click)="navigationService.navigateTo('dogs')" color="pink" expand="block">to login</ion-button>
+    </section>
   </div>
 </ion-content>
