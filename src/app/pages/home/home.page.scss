@@ -2,6 +2,11 @@ p{
   text-align: justify;
 }
 
+section {
+  border-radius: 20px !important;
+  
+}
+
 .border{
   border-radius: 20px;
   border-style: dashed !important;
@@ -9,6 +14,10 @@ p{
 
 .animal{
   height: 100px;
+}
+
+.sectionCont{
+  min-height: auto ;
 }
 
 #container {
@@ -24,12 +33,26 @@ p{
 #disclaimer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1.5s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 #disclaimer.show {
-  max-height: 500px;  // Ajusta este valor según sea necesario
+  max-height: 1000px;  
 }
 
 
+
+@media (max-width: 455px) {
+
+  section {
+      border-radius: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+  }
+
+  .sectionCont{
+    min-height: 100% ;
+  }
+ 
+}
 

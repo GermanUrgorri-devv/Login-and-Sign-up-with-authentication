@@ -1,11 +1,11 @@
 <ion-content class="sunset" [fullscreen]="true">
-  <div class="d-flex justify-content-center">
-    <section class="p-4 w-75 mt-5">
+  <div class="sectionCont d-flex justify-content-center">
+    <section class="w-400 p-4 mt-sm-3 mt-md-5 mb-sm-4 h-auto">
       <app-header title="Here are some photos of dogs :D"></app-header>
       <div>
         <ion-grid>
-          <ion-row>
-            <ion-col size="12" size-sm="5" size-md="4" size-lg="3" *ngFor="let dog of dogs"> 
+          <ion-row class="flex-row  ion-justify-content-center">
+            <ion-col class="d-flex justify-content-center"  size="12" size-sm="5" size-md="4" size-lg="3" *ngFor="let dog of dogs"> 
               <img [src]="dog.url" alt="Gato" style="width: 300px;">
             </ion-col>
           </ion-row>

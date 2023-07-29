@@ -1,32 +1,32 @@
 <ion-content class="sunset" [fullscreen]="true">
 
-  <div class="d-flex justify-content-center align-items-center vh-100">
-    <section class="w-400 p-4 w-75">
+  <div class="sectionCont d-flex justify-content-center">
+    <section class=" w-400 p-4 my-5 mt-md-5 mb-sm-4">
 
       <app-header title="Welcome home"></app-header>
 
-      <div class="d-flex">
-        <ion-button [disabled]="!catRole" (click)="navigationService.navigateTo('cats')" color="pink">          <div class=" ion-text-wrap d-flex flex-column align-items-center w-100">
-            <div>
-              <img src="../../../assets/icon/cat.png" class="animal" alt="icon of a cat">
+      <div class="d-flex flex-column flex-md-row">
+        <ion-button [disabled]="!catRole" (click)="navigationService.navigateTo('cats')" color="pink">
+            <div class="ion-text-wrap d-flex flex-column align-items-center w-100">
+                <div>
+                    <img src="../../../assets/icon/cat.png" class="animal" alt="icon of a cat">
+                </div>
+                <hr class="w-100">
+                <span>Only for people who likes <strong>cats</strong> :D</span>
             </div>
-            <hr class="w-100">
-            <span>Only for people who likes <strong>cats</strong> :D</span>
-          </div>
         </ion-button>
-
-
-
+    
         <ion-button [disabled]="!dogRole" (click)="navigationService.navigateTo('dogs')" color="orange">
-          <div class=" ion-text-wrap d-flex flex-column align-items-center w-100">
-            <div>
-              <img src="../../../assets/icon/dog.png" class="animal" alt="icon of a dog">
+            <div class="ion-text-wrap d-flex flex-column align-items-center w-100">
+                <div>
+                    <img src="../../../assets/icon/dog.png" class="animal" alt="icon of a dog">
+                </div>
+                <hr class="w-100">
+                <span>Only for people who likes <strong>dogs</strong> :D</span>
             </div>
-            <hr class="w-100">
-            <span>Only for people who likes <strong>dogs</strong> :D</span>
-          </div>
         </ion-button>
-      </div>
+    </div>
+    
 
       <div class="px-4 mt-3 border border-4 border-danger">
 
@@ -38,6 +38,9 @@
         </div>
 
         <div id="disclaimer">
+          <p>
+            Developed and designed by <a href="https://germanurgorri-portfolio.web.app/" target="_blank">Germán Urgorri Urgoiti. </a>
+          </p>
           <p>
             Hi user! Welcome to my small project of <strong>authentication and user role management.
             </strong>This practice page was created using Angular Ionic and Firebase as the backend.

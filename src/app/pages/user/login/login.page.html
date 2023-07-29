@@ -1,13 +1,13 @@
 <ion-content class="sunset" [fullscreen]="true" mode="ios">
 
-  <div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="d-flex justify-content-center align-items-center h-100">
     <section class=" p-4 ">
 
       <div class=" mb-3 d-flex align-items-center justify-content-between">
         <h1 class="fw-bolder fs-1 spacing text-center"> {{ showLoginOrRegister ? 'Login' : 'Register' }}</h1>
       </div>
 
-      <button type="button" (click)="loginWithGoogle()"
+      <button id="google" type="button" (click)="loginWithGoogle()"
         class="btn btn-light btn-lg w-100 mb-2 d-flex align-items-center">
         <div>
           <img src="../../../../assets/icon/Google.svg.png" alt="logo of Google">

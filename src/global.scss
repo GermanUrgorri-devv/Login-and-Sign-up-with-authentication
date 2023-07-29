@@ -40,11 +40,7 @@ section {
 .w-400{
     
     max-width: 455px;
-    min-width: 400px;
-}
-
-.spacing {
-    letter-spacing: .2rem;
+    min-width: 270px;
 }
 
 .sunset {
@@ -98,4 +94,22 @@ section {
 }
 .btn-group>.btn:focus, .btn-group>.btn:hover {
     z-index: auto;
+}
+
+@media (min-width: 300px) {
+
+    .spacing {
+        letter-spacing: .2rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+    section {
+        border-radius: 0;
+        
+    }
+    .sectionCont{
+        min-height: 100%;
+    }
 }
